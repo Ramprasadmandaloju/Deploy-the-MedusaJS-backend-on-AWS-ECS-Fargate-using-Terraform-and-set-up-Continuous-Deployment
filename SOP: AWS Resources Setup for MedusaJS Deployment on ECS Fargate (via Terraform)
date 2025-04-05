@@ -1,11 +1,10 @@
-# 📋 SOP: AWS Resources Setup for MedusaJS Deployment on ECS Fargate (via Terraform)
+AWS Resources Setup for MedusaJS Deployment on ECS Fargate (via Terraform)
 
-## ✅ Objective
+Objective
 Provision all AWS resources required to deploy the MedusaJS backend using ECS Fargate.
 
 ---
-
-## 🧰 Prerequisites
+ Prerequisites
 - AWS CLI installed and configured (`aws configure`)
 - Terraform installed
 - AWS IAM user with `AdministratorAccess`
@@ -14,9 +13,9 @@ Provision all AWS resources required to deploy the MedusaJS backend using ECS Fa
 
 ---
 
-## 🙜 Step-by-Step Instructions
+## Step-by-Step Instructions
 
-### 🔹 Step 1: Initialize Terraform Project
+###  Step 1: Initialize Terraform Project
 ```bash
 mkdir terraform
 cd terraform
@@ -24,7 +23,7 @@ touch main.tf variables.tf outputs.tf
 terraform init
 ```
 
-### 🔹 Step 2: VPC and Networking Setup
+###  Step 2: VPC and Networking Setup
 ```hcl
 resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
@@ -61,7 +60,7 @@ resource "aws_route_table_association" "a" {
 }
 ```
 
-### 🔹 Step 3: Create Security Group
+### Step 3: Create Security Group
 ```hcl
 resource "aws_security_group" "ecs_sg" {
   name        = "ecs-sg"
@@ -86,7 +85,7 @@ resource "aws_security_group" "ecs_sg" {
 }
 ```
 
-### 🔹 Step 4: IAM Roles
+### Step 4: IAM Roles
 ```hcl
 resource "aws_iam_role" "ecs_task_execution" {
   name = "ecsTaskExecutionRole"
@@ -109,7 +108,7 @@ resource "aws_iam_role_policy_attachment" "ecs_policy" {
 }
 ```
 
-### 🔹 Step 5: Create ECR Repository
+### Step 5: Create ECR Repository
 ```hcl
 resource "aws_ecr_repository" "medusa" {
   name = "medusa-server"
@@ -117,7 +116,7 @@ resource "aws_ecr_repository" "medusa" {
 }
 ```
 
-### 🔹 Step 6: ECS Cluster + Task + Service
+### Step 6: ECS Cluster + Task + Service
 ```hcl
 resource "aws_ecs_cluster" "medusa" {
   name = "medusa-cluster"
@@ -153,14 +152,14 @@ resource "aws_ecs_service" "medusa" {
 }
 ```
 
-### 🔹 Step 7: Outputs
+### Step 7: Outputs
 ```hcl
 output "ecr_repo_url" {
   value = aws_ecr_repository.medusa.repository_url
 }
 ```
 
-### 🔹 Step 8: Deploy
+### Step 8: Deploy
 ```bash
 terraform init
 terraform apply
@@ -168,7 +167,7 @@ terraform apply
 
 ---
 
-## 🌟 Summary of Resources
+##Summary of Resources
 
 | Resource Type       | Description                       |
 |---------------------|-----------------------------------|
