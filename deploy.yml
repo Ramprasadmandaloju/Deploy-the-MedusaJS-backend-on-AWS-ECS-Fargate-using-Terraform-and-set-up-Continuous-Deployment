@@ -34,3 +34,16 @@ jobs:
             --cluster medusa-cluster \
             --service medusa-service \
             --force-new-deployment
+
+
+
+
+
+          ###  🛠 Replace These with Your Values
+     <your_aws_account_id> → e.g., 123456789012
+
+      us-east-1 → your AWS region
+
+       medusa-cluster → your ECS cluster name
+
+      medusa-service → your ECS service name
