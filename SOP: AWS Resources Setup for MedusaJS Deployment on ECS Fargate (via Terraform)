@@ -183,4 +183,3 @@ terraform apply
 ---
 
 You're now ready to integrate this infrastructure with GitHub Actions for continuous deployment!
-
