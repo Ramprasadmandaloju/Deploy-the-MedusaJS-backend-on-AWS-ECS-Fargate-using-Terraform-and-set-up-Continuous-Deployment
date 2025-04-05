@@ -7,7 +7,7 @@ This project deploys the Medusa headless commerce backend using:
 - Docker
 - GitHub Actions
 
-## 📁 Folder Structure
+## Folder Structure
 - `medusa-server/`: Medusa backend app (placeholder)
 - `terraform/`: Terraform infrastructure code
 - `.github/workflows/`: GitHub Actions deployment pipeline
